@@ -26,7 +26,7 @@ Prawn::Example.generate("images.pdf", :page_size => "FOLIO") do
     end
     
     p.intro do
-      prose("Embedding images on PDF documents is fairly easy. Prawn supports both JPG and PNG images.
+      prose("Embedding images on PDF documents is fairly easy. Prawn supports JPG, PNG and PDF images.
 
       The examples show:")
 

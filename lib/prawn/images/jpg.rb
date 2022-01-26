@@ -16,6 +16,8 @@ module Prawn
     class JPG < Image
       attr_reader :width, :height, :bits, :channels
       attr_accessor :scaled_width, :scaled_height
+      alias :width_ratio :scaled_width
+      alias :height_ratio :scaled_height
       
       JPEG_SOF_BLOCKS = %W(\xc0 \xc1 \xc2 \xc3 \xc5 \xc6 \xc7 \xc9 \xca \xcb \xcd \xce \xcf)
       JPEG_APP_BLOCKS = %W(\xe0 \xe1 \xe2 \xe3 \xe4 \xe5 \xe6 \xe7 \xe8 \xe9 \xea \xeb \xec \xed \xee \xef)
@@ -24,7 +26,7 @@ module Prawn
       #
       # <tt>:data</tt>:: A binary string of JPEG data
       #
-      def initialize(data)
+      def initialize(data, options={})
         @data = data.dup
         ruby_19 { data.force_encoding("binary") }
         data = StringIO.new(data)
